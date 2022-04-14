@@ -1,7 +1,7 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
+pub mod parser;
+pub mod processor;
+mod types;
+
+pub trait QueryProcessor<TConn> {
+    fn execute(conn: TConn, query: types::Query) -> types::QueryResult;
 }
